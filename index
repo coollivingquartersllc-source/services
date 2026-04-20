@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services — Cool Living Quarters</title>
+  <link rel="icon" type="image/png" href="assets/clq.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy:    #00457C;
+      --navy-dk: #002f57;
+      --navy-lt: #1a6faa;
+      --sky:     #e8f4fd;
+      --white:   #ffffff;
+      --off:     #f7f9fc;
+      --gray:    #6b7280;
+      --gray-lt: #e5e7eb;
+      --text:    #1f2937;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--text); font-family: 'Lato', sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Quicksand', sans-serif; font-weight: 700; color: var(--navy); line-height: 1.3; }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { color: var(--navy-lt); }
+    img { max-width: 100%; display: block; }
+
+    /* TOP BAR */
+    .top-bar { background: var(--navy); color: rgba(255,255,255,0.85); font-size: 0.85rem; padding: 0.5rem 0; text-align: center; font-family: 'Quicksand', sans-serif; font-weight: 500; letter-spacing: 0.03em; }
+    .top-bar a { color: rgba(255,255,255,0.85); font-weight: 600; }
+    .top-bar a:hover { color: #fff; }
+
+    /* HEADER */
+    header { background: var(--white); border-bottom: 2px solid var(--navy); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,69,124,0.08); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.5rem; max-width: 1140px; margin: 0 auto; }
+    .logo-wrap { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-wrap img { width: 56px; height: 56px; object-fit: contain; }
+    .logo-name { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: 0.02em; line-height: 1.1; }
+    .logo-tagline { font-size: 0.7rem; color: var(--gray); font-family: 'Quicksand', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+    nav ul { display: flex; list-style: none; gap: 0.25rem; align-items: center; }
+    nav ul a { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 0.88rem; color: var(--navy); padding: 0.45rem 0.9rem; border-radius: 6px; transition: background 0.2s, color 0.2s; letter-spacing: 0.02em; }
+    nav ul a:hover, nav ul a.active { background: var(--sky); color: var(--navy-dk); }
+    .nav-cta { background: var(--navy) !important; color: #fff !important; border-radius: 6px !important; padding: 0.45rem 1.1rem !important; }
+    .nav-cta:hover { background: var(--navy-lt) !important; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; flex-direction: column; gap: 5px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
+
+    /* PAGE HERO */
+    .page-hero { background: linear-gradient(135deg, var(--navy-dk) 0%, var(--navy) 60%, var(--navy-lt) 100%); color: #fff; padding: 4rem 1.5rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; }
+    .page-hero .label { font-family: 'Quicksand', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #7dd3fc; display: block; margin-bottom: 0.6rem; opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s forwards; }
+    .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); color: #fff; margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.35s forwards; }
+    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; }
+
+    /* BREADCRUMB */
+    .breadcrumb { background: var(--off); border-bottom: 1px solid var(--gray-lt); padding: 0.65rem 1.5rem; font-size: 0.82rem; font-family: 'Quicksand', sans-serif; font-weight: 600; }
+    .breadcrumb .inner { max-width: 1140px; margin: 0 auto; display: flex; gap: 0.5rem; align-items: center; color: var(--gray); }
+    .breadcrumb a { color: var(--navy-lt); }
+    .breadcrumb a:hover { color: var(--navy); }
+    .breadcrumb .sep { color: var(--gray-lt); }
+
+    /* SECTION LABEL */
+    .section-label { font-family: 'Quicksand', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--navy-lt); margin-bottom: 0.5rem; display: block; }
+
+    /* SERVICE BLOCKS */
+    .services-section { padding: 5rem 1.5rem; max-width: 1140px; margin: 0 auto; }
+    .service-block { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; padding-bottom: 5rem; border-bottom: 1px solid var(--gray-lt); }
+    .service-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .service-block.reverse { direction: rtl; }
+    .service-block.reverse > * { direction: ltr; }
+    .service-number { font-family: 'Quicksand', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--navy-lt); margin-bottom: 0.5rem; display: block; }
+    .service-content h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: 1rem; }
+    .service-content p { color: var(--gray); margin-bottom: 1rem; font-size: 0.97rem; }
+    .service-content ul { list-style: none; margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.65rem; }
+    .service-content ul li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9rem; color: var(--text); }
+    .service-content ul li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--navy); flex-shrink: 0; margin-top: 0.5rem; }
+
+    /* IMAGE SLOT */
+    .img-slot { border-radius: 16px; overflow: hidden; background: linear-gradient(135deg, var(--sky) 0%, #dbeafe 100%); border: 2px dashed rgba(0,69,124,0.25); aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; position: relative; transition: border-color 0.3s, background 0.3s; cursor: pointer; }
+    .img-slot:hover { border-color: var(--navy-lt); background: linear-gradient(135deg, #d0e9f9 0%, #c7ddf5 100%); }
+    .img-slot img.loaded { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+    .img-slot-icon { width: 52px; height: 52px; background: rgba(0,69,124,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .img-slot-icon svg { width: 26px; height: 26px; fill: var(--navy-lt); }
+    .img-slot-text { font-family: 'Quicksand', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--navy-lt); text-align: center; padding: 0 1rem; }
+    .img-slot input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .img-slot .badge { position: absolute; top: 0.75rem; right: 0.75rem; background: var(--navy); color: #fff; font-family: 'Quicksand', sans-serif; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; opacity: 0; transition: opacity 0.3s; letter-spacing: 0.05em; text-transform: uppercase; }
+    .img-slot:hover .badge { opacity: 1; }
+
+    /* MISSION BANNER */
+    .mission-banner { background: var(--sky); border-top: 1px solid rgba(0,69,124,0.15); border-bottom: 1px solid rgba(0,69,124,0.15); padding: 3.5rem 1.5rem; text-align: center; }
+    .mission-banner h2 { font-size: clamp(1.3rem, 3vw, 1.9rem); max-width: 720px; margin: 0 auto 1rem; }
+    .mission-banner p { color: var(--gray); max-width: 560px; margin: 0 auto 2rem; }
+    .btn { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 0.92rem; padding: 0.85rem 2rem; border-radius: 8px; letter-spacing: 0.03em; transition: all 0.25s; cursor: pointer; text-decoration: none; display: inline-block; }
+    .btn-navy { background: var(--navy); color: #fff; }
+    .btn-navy:hover { background: var(--navy-lt); transform: translateY(-2px); color: #fff; }
+
+    /* FOOTER */
+    footer { background: var(--navy-dk); color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem; font-size: 0.82rem; font-family: 'Quicksand', sans-serif; }
+    footer a { color: rgba(255,255,255,0.6); }
+    footer a:hover { color: #fff; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      nav { display: none; width: 100%; }
+      nav.open { display: block; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--gray-lt); box-shadow: 0 8px 20px rgba(0,0,0,0.1); padding: 1rem; }
+      nav.open ul { flex-direction: column; gap: 0.25rem; }
+      nav.open ul a { display: block; padding: 0.65rem 1rem; }
+      .header-inner { position: relative; flex-wrap: wrap; }
+      .service-block, .service-block.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2rem; }
+    }
+    @media (max-width: 480px) { .logo-tagline { display: none; } }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    24/7 Referrals &amp; Intake: <a href="tel:8442665226">(844) 266-5226</a> &nbsp;|&nbsp; info@coollivingquartersfc.com &nbsp;|&nbsp; Houston, Texas
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-wrap">
+        <img src="assets/clq.png" alt="Cool Living Quarters Logo"/>
+        <div>
+          <div class="logo-name">Cool Living Quarters</div>
+          <div class="logo-tagline">Compassionate Care At Its Finest</div>
+        </div>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html" class="active">Our Services</a></li>
+          <li><a href="why-choose-us.html">Why Choose Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="referral.html" class="nav-cta">Make a Referral</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <div class="inner">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <span>Our Services</span>
+    </div>
+  </div>
+
+  <section class="page-hero">
+    <span class="label">What We Offer</span>
+    <h1>Our Services</h1>
+    <p>Specialized residential care programs designed for Houston's highest-need youth — delivered in luxurious, private homes with clinical precision and genuine compassion.</p>
+  </section>
+
+  <div class="services-section">
+
+    <!-- SERVICE 1 -->
+    <div class="service-block reveal">
+      <div class="service-content">
+        <span class="service-number">Service 01</span>
+        <h2>High-Acuity Residential Treatment Care</h2>
+        <p>Cool Living Quarters is a licensed Residential Treatment Center — not a standard group home. We serve youth with complex behavioral, emotional, and psychiatric needs who require a higher level of structured residential support.</p>
+        <p>Our clinical team delivers evidence-based therapeutic programming within a home environment that prioritizes dignity, comfort, and individualized care.</p>
+        <ul>
+          <li>Licensed RTC-level behavioral health programming</li>
+          <li>Individual, group, and family therapy integration</li>
+          <li>Trauma-informed care frameworks</li>
+          <li>Coordination with placing agencies and guardians</li>
+          <li>Educational support and life skills development</li>
+        </ul>
+      </div>
+      <div class="img-slot" id="slot1" title="Click to upload an image">
+        <div class="img-slot-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        </div>
+        <div class="img-slot-text">Click to upload a photo<br/><span style="font-weight:400; color: var(--gray);">Recommended: 800×600px</span></div>
+        <span class="badge">Upload</span>
+        <input type="file" accept="image/*" onchange="loadImage(this,'slot1')"/>
+      </div>
+    </div>
+
+    <!-- SERVICE 2 -->
+    <div class="service-block reverse reveal" style="transition-delay:0.1s">
+      <div class="service-content">
+        <span class="service-number">Service 02</span>
+        <h2>Authorized Crisis Intervention</h2>
+        <p>Unlike standard group homes, Cool Living Quarters is authorized to deliver clinical crisis interventions on-site. Our staff are trained and certified in approved crisis response protocols, ensuring residents receive immediate, safe, and therapeutic de-escalation — without the disruption of unnecessary emergency transports.</p>
+        <ul>
+          <li>On-site authorized crisis intervention protocols</li>
+          <li>Certified staff in de-escalation and safety planning</li>
+          <li>24/7 on-call clinical coverage</li>
+          <li>Coordination with mental health emergency services</li>
+          <li>Detailed incident documentation and agency reporting</li>
+        </ul>
+      </div>
+      <div class="img-slot" id="slot2" title="Click to upload an image">
+        <div class="img-slot-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        </div>
+        <div class="img-slot-text">Click to upload a photo<br/><span style="font-weight:400; color: var(--gray);">Recommended: 800×600px</span></div>
+        <span class="badge">Upload</span>
+        <input type="file" accept="image/*" onchange="loadImage(this,'slot2')"/>
+      </div>
+    </div>
+
+    <!-- SERVICE 3 -->
+    <div class="service-block reveal" style="transition-delay:0.15s">
+      <div class="service-content">
+        <span class="service-number">Service 03</span>
+        <h2>Human Trafficking Recovery Services</h2>
+        <p>We provide a specialized recovery track for youth survivors of human trafficking — one of the most under-served and vulnerable populations in the child welfare system. Our program delivers trauma-specific therapy, safety planning, and survivor-centered support within a highly private, secure residential setting.</p>
+        <ul>
+          <li>Trauma-specific programming for trafficking survivors</li>
+          <li>Safety planning and risk assessment protocols</li>
+          <li>Coordination with law enforcement and victim advocacy partners</li>
+          <li>High-privacy residential placement in upscale neighborhoods</li>
+          <li>Survivor-centered goal planning and aftercare support</li>
+        </ul>
+      </div>
+      <div class="img-slot" id="slot3" title="Click to upload an image">
+        <div class="img-slot-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        </div>
+        <div class="img-slot-text">Click to upload a photo<br/><span style="font-weight:400; color: var(--gray);">Recommended: 800×600px</span></div>
+        <span class="badge">Upload</span>
+        <input type="file" accept="image/*" onchange="loadImage(this,'slot3')"/>
+      </div>
+    </div>
+
+    <!-- SERVICE 4 -->
+    <div class="service-block reverse reveal" style="transition-delay:0.2s">
+      <div class="service-content">
+        <span class="service-number">Service 04</span>
+        <h2>Luxury Home Environment</h2>
+        <p>Our homes are intentionally located in Houston's upscale residential neighborhoods — providing the privacy, space, and aesthetic comfort that supports genuine healing. Every home is professionally appointed with spacious common areas, private bedrooms, and all the comforts a youth deserves.</p>
+        <ul>
+          <li>Spacious homes in upscale Houston neighborhoods</li>
+          <li>Private bedrooms and comfortable communal spaces</li>
+          <li>Full home amenities — kitchens, backyards, living areas</li>
+          <li>Discreet, secure locations for maximum resident privacy</li>
+          <li>Home visits and tours available for placing agencies</li>
+        </ul>
+      </div>
+      <div class="img-slot" id="slot4" title="Click to upload an image">
+        <div class="img-slot-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        </div>
+        <div class="img-slot-text">Click to upload a photo<br/><span style="font-weight:400; color: var(--gray);">Recommended: 800×600px</span></div>
+        <span class="badge">Upload</span>
+        <input type="file" accept="image/*" onchange="loadImage(this,'slot4')"/>
+      </div>
+    </div>
+
+  </div><!-- /services-section -->
+
+  <div class="mission-banner">
+    <h2>"Every youth we serve deserves clinical excellence delivered in a place that truly feels like home."</h2>
+    <p>Ready to place a youth in our program? Our intake team is available 24/7.</p>
+    <a href="referral.html" class="btn btn-navy">Make a Referral</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 <a href="index.html">Kevin Marts</a> · All Rights Reserved · Houston, TX · <a href="tel:8442665226">(844) 266-5226</a> · info@coollivingquartersfc.com</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+
+    function loadImage(input, slotId) {
+      const file = input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const slot = document.getElementById(slotId);
+        // hide placeholder elements
+        slot.querySelectorAll('.img-slot-icon, .img-slot-text, .badge').forEach(el => el.style.display = 'none');
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.className = 'loaded';
+        img.alt = 'Service image';
+        slot.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>
