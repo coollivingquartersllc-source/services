@@ -62,9 +62,6 @@
     .breadcrumb a:hover { color: var(--navy); }
     .breadcrumb .sep { color: var(--gray-lt); }
 
-    /* SECTION LABEL */
-    .section-label { font-family: 'Quicksand', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--navy-lt); margin-bottom: 0.5rem; display: block; }
-
     /* SERVICE BLOCKS */
     .services-section { padding: 5rem 1.5rem; max-width: 1140px; margin: 0 auto; }
     .service-block { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; padding-bottom: 5rem; border-bottom: 1px solid var(--gray-lt); }
@@ -78,16 +75,9 @@
     .service-content ul li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9rem; color: var(--text); }
     .service-content ul li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--navy); flex-shrink: 0; margin-top: 0.5rem; }
 
-    /* IMAGE SLOT */
-    .img-slot { border-radius: 16px; overflow: hidden; background: linear-gradient(135deg, var(--sky) 0%, #dbeafe 100%); border: 2px dashed rgba(0,69,124,0.25); aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; position: relative; transition: border-color 0.3s, background 0.3s; cursor: pointer; }
-    .img-slot:hover { border-color: var(--navy-lt); background: linear-gradient(135deg, #d0e9f9 0%, #c7ddf5 100%); }
-    .img-slot img.loaded { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
-    .img-slot-icon { width: 52px; height: 52px; background: rgba(0,69,124,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .img-slot-icon svg { width: 26px; height: 26px; fill: var(--navy-lt); }
-    .img-slot-text { font-family: 'Quicksand', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--navy-lt); text-align: center; padding: 0 1rem; }
-    .img-slot input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-    .img-slot .badge { position: absolute; top: 0.75rem; right: 0.75rem; background: var(--navy); color: #fff; font-family: 'Quicksand', sans-serif; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; opacity: 0; transition: opacity 0.3s; letter-spacing: 0.05em; text-transform: uppercase; }
-    .img-slot:hover .badge { opacity: 1; }
+    /* IMAGE */
+    .service-img { border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; }
+    .service-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* MISSION BANNER */
     .mission-banner { background: var(--sky); border-top: 1px solid rgba(0,69,124,0.15); border-bottom: 1px solid rgba(0,69,124,0.15); padding: 3.5rem 1.5rem; text-align: center; }
@@ -123,7 +113,7 @@
 <body>
 
   <div class="top-bar">
-    24/7 Referrals &amp; Intake: <a href="tel:8442665226">(844) 266-5226</a> &nbsp;|&nbsp; <a href="mailto:info@coollivingquartersfc.com">info@coollivingquartersfc.com &nbsp;|&nbsp; Houston, Texas
+    24/7 Referrals &amp; Intake: <a href="tel:8442665226">(844) 266-5226</a> &nbsp;|&nbsp; <a href="mailto:info@coollivingquartersfc.com">info@coollivingquartersfc.com</a> &nbsp;|&nbsp; Houston, Texas
   </div>
 
   <header>
@@ -179,10 +169,9 @@
           <li>Educational support and life skills development</li>
         </ul>
       </div>
-      <div class="img-slot" id="slot1">
-  <img src="assets/LR.jng" style="width: 100%; height: 100%; object-fit: cover;">
-  <input type="file" accept="image/*" onchange="loadImage(this,'slot1')" style="position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer;"/>
-</div>
+      <div class="service-img">
+        <img src="assets/LR.jpg" alt="High-Acuity Residential Treatment Care"/>
+      </div>
     </div>
 
     <!-- SERVICE 2 -->
@@ -199,10 +188,9 @@
           <li>Detailed incident documentation and agency reporting</li>
         </ul>
       </div>
-      <div class="img-slot" id="slot1">
-  <img src="assets/LP.png" style="width: 100%; height: 100%; object-fit: cover;">
-  <input type="file" accept="image/*" onchange="loadImage(this,'slot1')" style="position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer;"/>
-</div>
+      <div class="service-img">
+        <img src="assets/LP.jpg" alt="Authorized Crisis Intervention"/>
+      </div>
     </div>
 
     <!-- SERVICE 3 -->
@@ -219,10 +207,9 @@
           <li>Survivor-centered goal planning and aftercare support</li>
         </ul>
       </div>
-     <div class="img-slot" id="slot1">
-  <img src="assets/LO.png" style="width: 100%; height: 100%; object-fit: cover;">
-  <input type="file" accept="image/*" onchange="loadImage(this,'slot1')" style="position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer;"/>
-</div>
+      <div class="service-img">
+        <img src="assets/LO.jpg" alt="Human Trafficking Recovery Services"/>
+      </div>
     </div>
 
     <!-- SERVICE 4 -->
@@ -239,10 +226,9 @@
           <li>Home visits and tours available for placing agencies</li>
         </ul>
       </div>
-      <div class="img-slot" id="slot1">
-  <img src="assets/to.png" style="width: 100%; height: 100%; object-fit: cover;">
-  <input type="file" accept="image/*" onchange="loadImage(this,'slot1')" style="position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer;"/>
-</div>
+      <div class="service-img">
+        <img src="assets/to.jpg" alt="Luxury Home Environment"/>
+      </div>
     </div>
 
   </div><!-- /services-section -->
@@ -254,7 +240,7 @@
   </div>
 
   <footer>
-    <p>&copy; 2026 <a href="https://coollivingquartersfc.com/">Kevin Marts</a> · All Rights Reserved · Houston, TX · <a href="tel:8442665226">(844) 266-5226</a> · <a href="mailto:info@coollivingquartersfc.com">info@coollivingquartersfc.com </p>
+    <p>&copy; 2026 <a href="https://coollivingquartersfc.com/">Kevin Marts</a> · All Rights Reserved · Houston, TX · <a href="tel:8442665226">(844) 266-5226</a> · <a href="mailto:info@coollivingquartersfc.com">info@coollivingquartersfc.com</a></p>
   </footer>
 
   <script>
@@ -267,23 +253,6 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.1 });
     reveals.forEach(r => obs.observe(r));
-
-    function loadImage(input, slotId) {
-      const file = input.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const slot = document.getElementById(slotId);
-        // hide placeholder elements
-        slot.querySelectorAll('.img-slot-icon, .img-slot-text, .badge').forEach(el => el.style.display = 'none');
-        const img = document.createElement('img');
-        img.src = e.target.result;
-        img.className = 'loaded';
-        img.alt = 'Service image';
-        slot.appendChild(img);
-      };
-      reader.readAsDataURL(file);
-    }
   </script>
 </body>
 </html>
